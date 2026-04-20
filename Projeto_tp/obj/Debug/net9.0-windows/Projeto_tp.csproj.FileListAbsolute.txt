@@ -1,0 +1,16 @@
+C:\Users\Utilizador\OneDrive\Desktop\Projeto_tp\bin\Debug\net9.0-windows\Projeto_tp.exe
+C:\Users\Utilizador\OneDrive\Desktop\Projeto_tp\bin\Debug\net9.0-windows\Projeto_tp.deps.json
+C:\Users\Utilizador\OneDrive\Desktop\Projeto_tp\bin\Debug\net9.0-windows\Projeto_tp.runtimeconfig.json
+C:\Users\Utilizador\OneDrive\Desktop\Projeto_tp\bin\Debug\net9.0-windows\Projeto_tp.dll
+C:\Users\Utilizador\OneDrive\Desktop\Projeto_tp\bin\Debug\net9.0-windows\Projeto_tp.pdb
+C:\Users\Utilizador\OneDrive\Desktop\Projeto_tp\obj\Debug\net9.0-windows\Projeto_tp.Form1.resources
+C:\Users\Utilizador\OneDrive\Desktop\Projeto_tp\obj\Debug\net9.0-windows\Projeto_tp.csproj.GenerateResource.cache
+C:\Users\Utilizador\OneDrive\Desktop\Projeto_tp\obj\Debug\net9.0-windows\Projeto_tp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Utilizador\OneDrive\Desktop\Projeto_tp\obj\Debug\net9.0-windows\Projeto_tp.AssemblyInfoInputs.cache
+C:\Users\Utilizador\OneDrive\Desktop\Projeto_tp\obj\Debug\net9.0-windows\Projeto_tp.AssemblyInfo.cs
+C:\Users\Utilizador\OneDrive\Desktop\Projeto_tp\obj\Debug\net9.0-windows\Projeto_tp.csproj.CoreCompileInputs.cache
+C:\Users\Utilizador\OneDrive\Desktop\Projeto_tp\obj\Debug\net9.0-windows\Projeto_tp.dll
+C:\Users\Utilizador\OneDrive\Desktop\Projeto_tp\obj\Debug\net9.0-windows\refint\Projeto_tp.dll
+C:\Users\Utilizador\OneDrive\Desktop\Projeto_tp\obj\Debug\net9.0-windows\Projeto_tp.pdb
+C:\Users\Utilizador\OneDrive\Desktop\Projeto_tp\obj\Debug\net9.0-windows\Projeto_tp.genruntimeconfig.cache
+C:\Users\Utilizador\OneDrive\Desktop\Projeto_tp\obj\Debug\net9.0-windows\ref\Projeto_tp.dll

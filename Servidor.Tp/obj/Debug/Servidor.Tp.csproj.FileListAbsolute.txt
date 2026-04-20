@@ -1,0 +1,8 @@
+C:\Users\Utilizador\OneDrive\Desktop\Servidor.Tp\bin\Debug\Servidor.Tp.exe.config
+C:\Users\Utilizador\OneDrive\Desktop\Servidor.Tp\bin\Debug\Servidor.Tp.exe
+C:\Users\Utilizador\OneDrive\Desktop\Servidor.Tp\bin\Debug\Servidor.Tp.pdb
+C:\Users\Utilizador\OneDrive\Desktop\Servidor.Tp\obj\Debug\Servidor.Tp.csproj.AssemblyReference.cache
+C:\Users\Utilizador\OneDrive\Desktop\Servidor.Tp\obj\Debug\Servidor.Tp.csproj.CoreCompileInputs.cache
+C:\Users\Utilizador\OneDrive\Desktop\Servidor.Tp\obj\Debug\Servidor.Tp.exe
+C:\Users\Utilizador\OneDrive\Desktop\Servidor.Tp\obj\Debug\Servidor.Tp.pdb
+C:\Users\Utilizador\OneDrive\Desktop\Servidor.Tp\obj\Debug\Servidor.Tp.exe.config
