@@ -17,7 +17,7 @@ namespace Projeto_tp
         private NetworkStream stream;
 
         // Nome do utilizador (enviado junto com a mensagem)
-        private string username = "Cliente 1";
+        private string username;
 
         // Token para cancelar a thread de receção
         private CancellationTokenSource cts;
@@ -65,9 +65,9 @@ namespace Projeto_tp
             {
                 // Mostra erro caso não consiga ligar ao servidor
                 MessageBox.Show(this, "Falha ao ligar ao servidor: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
             }
         }
-
 
         /// Evento do botão "Enviar".
         /// Envia uma mensagem para o servidor.
@@ -75,17 +75,17 @@ namespace Projeto_tp
         {
             // Obtém a mensagem da textbox
             string msg = textBox_msg.Text?.Trim();
+            if (string.IsNullOrWhiteSpace(msg))
+            {
+                MessageBox.Show(this, "Por favor, insira uma mensagem.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             // Se estiver vazia, não faz nada
             if (string.IsNullOrEmpty(msg))
                 return;
 
-            // Verifica se está ligado ao servidor
-            if (stream == null || cliente == null || !cliente.Connected)
-            {
-                MessageBox.Show(this, "Não está ligado ao servidor.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            
 
             // Formata a mensagem com o nome do utilizador
             string msgFinal = username + ": " + msg;
@@ -110,6 +110,31 @@ namespace Projeto_tp
                 MessageBox.Show(this, "Erro ao enviar: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        /// <summary>
+        /// Processa as mensagens recebidas do servidor e atualiza a interface do usuário. 
+        /// Se a mensagem tiver o prefixo "SET_NAME|", define o nome de usuário local e exibe uma mensagem de boas-vindas.
+        /// </summary>
+        /// <param name="msg">A string contendo a mensagem ou comando enviado pelo servidor.</param>
+        private void HandleServerMessage(string msg)
+        {
+            if (msg.StartsWith("SET_NAME|"))
+            {
+                username = msg.Split('|')[1];
+
+                Invoke(new Action(() =>
+                {
+                    nameLabel.Text = "Bem-vindo, " + username + "!";
+                    btn_enviar.Enabled = true;
+                }));
+
+                return;
+            }
+
+            Invoke(new Action(() =>
+            {
+                listBox1.Items.Add(msg);
+            }));
+        }
 
         /// Método executado numa thread separada.
         /// Responsável por receber mensagens do servidor.
@@ -122,55 +147,29 @@ namespace Projeto_tp
 
             try
             {
-                // Continua a receber enquanto não for cancelado
                 while (!cts.IsCancellationRequested)
                 {
                     int bytes = 0;
 
                     try
                     {
-                        // Lê dados do servidor
                         bytes = stream.Read(buffer, 0, buffer.Length);
                     }
-                    catch (IOException)
-                    {
-                        // Ligação fechada pelo servidor
-                        break;
-                    }
-                    catch (ObjectDisposedException)
+                    catch
                     {
                         break;
                     }
 
-                    // Se bytes == 0, houve desconexão
                     if (bytes == 0)
                         break;
 
-                    // Converte bytes para string
                     string msg = Encoding.UTF8.GetString(buffer, 0, bytes);
 
-                    // Remove "Nome: " da mensagem para exibição
-                    string displayMsg = msg;
-                    int idx = msg.IndexOf(": ");
-
-                    if (idx >= 0 && idx + 2 < msg.Length)
-                    {
-                        displayMsg = msg.Substring(idx + 2);
-                    }
-
-                    // Atualiza a interface gráfica de forma segura (thread-safe)
-                    if (listBox1.IsHandleCreated)
-                    {
-                        listBox1.Invoke(new Action(() =>
-                        {
-                            listBox1.Items.Add("Outro: " + displayMsg);
-                        }));
-                    }
+                    HandleServerMessage(msg);
                 }
             }
             finally
             {
-                // Fecha ligação e atualiza UI
                 SafeClose();
 
                 if (IsHandleCreated)

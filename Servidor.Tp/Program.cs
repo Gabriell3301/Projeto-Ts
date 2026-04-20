@@ -13,6 +13,7 @@ namespace Servidor.Tp
         /// Método principal que inicia o servidor TCP.
         /// O servidor fica à escuta de clientes na porta 5000 e cria uma thread
         /// para cada cliente que se liga.
+        static int nextId = 1; // Contador para atribuir IDs únicos aos clientes
         static void Main(string[] args)
         {
             // Cria o servidor TCP que aceita ligações em qualquer IP na porta 5000
@@ -44,11 +45,14 @@ namespace Servidor.Tp
                     clientes.Add(cliente);
 
                     // Atribui um nome automático ao cliente (ex: cliente1, cliente2...)
-                    nome = "cliente" + clientes.Count;
+                    nome = "Cliente " + nextId++;
                     nomes[cliente] = nome;
                 }
-
+                // Diz que o 
                 Console.WriteLine("Cliente ligado: " + nome);
+                NetworkStream stream = cliente.GetStream();
+                byte[] nameData = Encoding.UTF8.GetBytes("SET_NAME|" + nome);
+                stream.Write(nameData, 0, nameData.Length);
 
                 // Cria uma nova thread para tratar este cliente
                 Thread t = new Thread(() => HandleClient(cliente, clientes, nomes, clientesLock));
