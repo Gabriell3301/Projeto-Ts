@@ -95,6 +95,7 @@ namespace Projeto_tp
 
             try
             {
+
                 // Envia a mensagem
                 stream.Write(data, 0, data.Length);
 
