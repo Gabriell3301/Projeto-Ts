@@ -19,6 +19,8 @@ namespace Projeto_tp
         // Nome do utilizador (enviado junto com a mensagem)
         private string username;
 
+
+
         // Token para cancelar a thread de receção
         private CancellationTokenSource cts;
 
